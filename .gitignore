@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.streamlit/*.toml
+documentation/Streamlit & SSRS.txt
+debug.log
+!important.log
+*.log
+test_page.py
+test.ipynb
+sites_url_list.md

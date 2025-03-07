@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infeed700 Reports</title>
+    <style>
+        /* Definindo variáveis de cor */
+        :root {
+            /* Paleta Verde */
+            --primary-green:      #027c40;
+            --dark-green:         #014d28;
+            --medium-dark-green:  #02663a;
+            --medium-light-green: #039f56;
+            --light-green:        #04c16d;
+            --very-light-green:   #a3e1b8;
+
+            /* Paleta Azul (baseada em #2b408a) */
+            --primary-blue:       #2b408a;
+            --dark-blue:          #1f3169;
+            --medium-dark-blue:   #3d5aa8;
+            --medium-light-blue:  #5e78c7;
+            --light-blue:         #8aa4e0;
+            --very-light-blue:    #d0dcf4;
+        }
+        /* Base Styles */
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          font-family: Arial, sans-serif;
+          color: #333;
+        }
+        html {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+          background-color: #ffffff; /* Fundo branco */
+          padding: 20px;
+        }
+        /* Container */
+        #home-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+        /* Header with Background Image */
+        #home-header {
+            background: linear-gradient(to right, rgba(31, 49, 105, 0.7), rgba(208, 220, 244, 0.0)), 
+                        url('assets/images/home_silo.png');
+            background-color: var(--dark-blue); /* Fallback color */
+            background-size: cover;
+            background-position: center;
+            color: var(--very-light-green);
+            text-align: center;
+            padding: 5vw 2vw;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            height: 250px;
+            display: flex;
+            align-items: center; /* Centraliza o conteúdo verticalmente */
+            justify-content: center; /* Centraliza o conteúdo horizontalmente */
+            margin-bottom: 0px;
+            padding: 0px;
+        }
+        #home-header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centraliza horizontalmente */
+            justify-content: flex-start; /* Alinha ao topo verticalmente */
+            height: 100%;
+            padding-top: 70px; /* Espaço entre o topo e o título */
+            width: 100%;
+            color: white;
+        }
+
+        #home-header-content h1 {
+            font-size: 2.5em;
+            margin: 0;
+            padding: 0;
+            color: white;
+            text-align: center;
+        }
+        #home-header-content p {
+          font-size: 1.2em;
+          margin-top: 10px;
+          max-width: 600px;
+          margin: 10px auto;
+          color: white;
+        }
+        #home-header-content p span {
+            color: var(--very-light-green);
+            font-style: italic;
+            background-color: var(--primary-blue);
+            padding: 8px 12px;
+            border-radius: 8px;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.7em; /* Diminui o tamanho da letra */
+            transition: all 0.3s ease;
+        }
+        #home-header-content p span:hover {
+            background-color: var(--medium-dark-green);
+            color: var(--light-green);
+            transform: scale(1.05);
+        }
+        /* Section Titles */
+        #home-section-header {
+          text-align: center;
+          margin-bottom: 30px;
+          color: var(--dark-blue);
+        }
+        #home-section-header h2 {         
+          color: var(--dark-blue);
+        }  
+        #home-releases {
+            margin-top: 20px;
+            padding: 0px;
+            background-color: white;
+            border-radius: 8px;
+            padding-bottom: 30px;
+        }
+        #home-releases h2 {
+            text-align: center;
+            color: var(--dark-blue);
+        }
+        #release-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(1000px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .release-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;  
+            width: 100%;          
+           
+            transition: transform 0.2s;
+        }       
+        .release-card h3 {
+            color: var(--primary-green);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .release-card ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: #333;
+        }
+        .release-card li {
+            margin-bottom: 5px;
+        }    
+
+        /* Seção de Contato */
+        #home-contact {
+            background-color: whitesmoke;
+            margin-top: 0px;
+            padding: 20px;
+            width: 100%;
+            padding-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            color: var(--dark-green);
+        }
+
+        #home-contact-content h1 {
+            color: var(--primary-green);
+            font-size: 24px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        #home-contact-content p {
+            color: var(--dark-green);
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        #home-contact-content span {
+            display: block;
+            color: var(--medium-dark-green);
+            font-weight: 500;
+        }
+
+        #home-contact-content p span a {
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        #home-contact-content p span a:hover {
+            color: var(--medium-light-green);
+        }
+        #need-help {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+          
+            text-align: left;
+            color: var(--dark-blue);
+        }
+
+        #need-help h1 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: var(--primary-green);
+        }
+
+        #need-help p {
+            font-size: 1em;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        #need-help p a {
+            color: var(--primary-blue);
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+
+        #need-help p a:hover {
+            color: var(--medium-light-green);
+        }
+
+    
+
+    </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header id="home-header">
+      <div id="home-header-content">
+          <h1>Welcome to Infeed Reports</h1>
+          <p><span>Feed your data, fuel your growth!</span></p>            
+      </div>      
+  </header>  
+  <section id="need-help">
+    <h1>Need Help?</h1>
+    <p>
+        If you need assistance, simply click the button at the bottom of the report to send an email to 
+        our support team at <a href="mailto:reports@icmcsl.ie">reports@icmcsl.ie</a>. The email will automatically include the necessary technical details.<br>
+        Feel free to provide any additional information.<br><br>
+        Our team is here to help you!
+    </p>    
+  </section>
+  <section id="home-releases">    
+    <div id="release-grid">        
+        <div class="release-card">
+            <h3>Release 1.0</h3>
+            <ul>
+                <li>Intuitive navigation with a new left-side menu.</li>
+                <li>Added date and time selection input.</li>  
+                <li>Performance improvements to speed up current reports.</li> 
+                <li>Simple installation.</li>
+                <li>On-premise deployment.</li> 
+                <li>Button Report a issue.</li>                     
+            </ul>
+        </div>                 
+    </div>
+    </section>
+    <section>
+        <!-- Contact Session -->
+        <header id="home-contact">
+            <div id="home-contact-content">
+                <h1>Contact</h1>
+                <p>
+                    <span>ICM Computer Systems Limited</span>
+                    <span><a href="https://www.icmcsl.com" target="_blank">www.icmcsl.com</a></span>
+                    <span><a href="mailto:reports@icmcsl.ie">reports@icmcsl.ie</a></span>
+                    <span>+353578622651</span>
+                </p>            
+            </div>      
+        </header> 
+    </section>
+
+</body>
+</html>
